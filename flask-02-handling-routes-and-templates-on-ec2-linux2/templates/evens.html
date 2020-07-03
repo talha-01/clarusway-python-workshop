@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List 10</title>
+</head>
+<body>
+    <h1>Created 10 List Items</h1>
+    <ul>
+        {% for i in range(1, 11) %}
+            {% if  i % 2 == 0  %}
+                <li><h1>{{ i }}</h1></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
