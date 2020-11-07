@@ -102,7 +102,7 @@ def get_task(task_id):
     task = find_task(task_id)
     if task == None:
         abort(404)
-    return jsonify({'task foud': task})
+    return jsonify({'task found': task})
 
 @app.route('/todos', methods = ['POST'])
 def add_task():
