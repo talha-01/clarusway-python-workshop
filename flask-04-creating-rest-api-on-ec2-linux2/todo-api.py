@@ -37,7 +37,7 @@ def get_all_tasks():
 
 def find_tasks(id):
     query = '''
-    SELECT * FROM todos;
+    SELECT * FROM todos WHERE task_id={id};
     '''
     row = db.session.execute(query).first()
     task = None
@@ -128,7 +128,14 @@ def delete_task(task_id):
     if task == None:
         abort(404)
     return jsonify({'result':remove_task(task)})
+    
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
+@app.errorhandler(400)
+def bad_request(error):
+    return make_response(jsonify({'error': 'Bad request'}), 400)
 
 if __name__ == '__main__':
     init_todo_db()
