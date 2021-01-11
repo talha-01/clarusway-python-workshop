@@ -36,8 +36,8 @@ def get_all_tasks():
     return tasks
 
 def find_tasks(id):
-    query = '''
-    SELECT * FROM todos;
+    query = f'''
+    SELECT * FROM todos WHERE task_id={id};
     '''
     row = db.session.execute(query).first()
     task = None
@@ -64,7 +64,7 @@ def insert_task(title, description):
 def change_task(task):
     update = f'''
     UPDATE todos
-    SET title="{task['title']}, description="{task['description']}, is_done={task['is_done']}
+    SET title="{task['title']}", description="{task['description']}", is_done="{task['is_done']}"
     WHERE task_id={task['task_id']};
     '''
     result = db.session.execute(update)
@@ -99,10 +99,10 @@ def get_tasks():
 
 @app.route('/todos/<int:task_id>', methods=['GET'])
 def get_task(task_id):
-    task = find_task(task_id)
+    task = find_tasks(task_id)
     if task == None:
         abort(404)
-    return jsonify({'task foud': task})
+    return jsonify({'task found': task})
 
 @app.route('/todos', methods = ['POST'])
 def add_task():
