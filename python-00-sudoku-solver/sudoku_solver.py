@@ -1,6 +1,6 @@
 puzzle = [
     [0, 0, 0, 1, 0, 5, 0, 6, 8],
-    [0, 0, 0, 0, 0, 0, 7, 0, 1],
+    [0, 0, 0, 0, 0, 0, 7, 0, 0],
     [9, 0, 1, 0, 0, 0, 0, 3, 0],
     [0, 0, 7, 0, 2, 6, 0, 0, 0],
     [5, 0, 0, 0, 0, 0, 0, 0, 3],
@@ -10,6 +10,7 @@ puzzle = [
     [7, 9, 0, 4, 0, 1, 0, 0, 0]
 ]
 
+print(f'{int(str(puzzle).count("0"))/81:.3f}')
 # This code solves all sudokus that does NOT require guessing.
 green = True
 while green:
